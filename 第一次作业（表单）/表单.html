@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="表单.css">
+</head>
+<body>
+	<b style="display: block; font-size: 30px;margin-bottom: 20px;">毕业生信息</b>
+	<form action="" id="box">
+		<fieldset>
+			<legend>
+				<p id="boxp">学生信息</p>
+			</legend>
+			<div id="d1">
+				<p id="p">姓名</p>
+				<input type="text" id = "content" name="name" placeholder="请输入姓名" required ="必须填写" autofocus = "姓名">
+				<p style="color:red;float: left; margin:0; padding-left: 3px;width: 260px;">*</p>
+			</div>
+			<div id="d1">
+				<p id="p">学号</p>
+				<input type="text" id = "content" name="name" placeholder="请输入学号" required ="必须填写" >
+				<p style="color:red;float: left; margin:0; padding-left: 3px;width: 260px;">*</p>
+			</div>
+			<div id="d1">
+				<p id="p">手机</p>
+				<input type="tel" id = "content" name="name" placeholder="请输入手机号" required ="必须填写" >
+				<p style="color:red;float: left; margin:0; padding-left: 3px;width: 260px;">*</p>
+			</div>
+			<div id="d1">
+				<p id="p">邮箱</p>
+				<input type="email" id = "content" name="name" placeholder="请输入邮箱地址" required ="必须填写" >
+				<p style="color:red;float: left; margin:0; padding-left: 3px;width: 260px;">*</p>
+			</div>
+
+		</fieldset>
+
+	</form>
+	<form action="" id="box">
+		<fieldset>
+			<legend>
+				<p id="boxp">录取情况</p>
+			</legend>
+			<div id="d2">
+				<p id="p">录取学校</p>
+				<input type="email" id = "content1" name="name" required ="必须填写">
+			</div>
+			<div id="d2">
+				<p id="p">入学成绩</p>
+				<input type="email" id = "content1" name="name" >
+			</div>
+			<div id="d2">
+				<p id="p">入学时间</p>
+				<input type="date"  id = "content1" name="日期" >
+			</div>
+		</fieldset>
+
+	</form>
+	<input type="submit" value="提交"/>
+</body>
+</html>
