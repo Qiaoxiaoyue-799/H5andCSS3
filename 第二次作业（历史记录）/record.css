@@ -1,0 +1,36 @@
+#search{
+	height: 40px;
+	width: 230px;
+	float: left;
+}
+#button{
+	margin-left: 5px;
+	height: 40px;
+	width: 120px;
+}
+#box0{
+	height: 45px;
+	width: 100%;
+}
+#box{
+	width: 380px;
+	float: left;
+	display: block;
+}
+#delete{
+	width: 22px;
+	height: 22px;
+	background: #E0E0E0;
+	color: #fff;
+ 	text-align: center;
+ 	margin-top: 30px;
+ 	float: left;
+ 	padding:0;
+}
+#con{
+	height:20px;
+	background-color:#E0E0E0;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}

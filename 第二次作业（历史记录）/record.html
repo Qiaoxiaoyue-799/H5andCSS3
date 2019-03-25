@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>历史记录</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="record.css">
+</head>
+<body>
+	<div id="box0">
+		<input type="search" name="ser1" id = "search" placeholder="请输入想查找的商品" autofocus="autofocus"/>
+		<input type="button" name="button" id = "button" value="搜索" onclick="saveStorage('search')" />
+	</div>
+	<div id="box">
+		<p>最近搜索</p>
+		<p id="msg"></p>
+	</div>
+	<!-- <div id="delete">X</div> -->
+	<input type="button" id = "delete" value="X" name="btn" onclick="clearStorage('msg');">
+</body>
+<script type="text/javascript">
+    function saveStorage(id) {
+        var data = document.getElementById(id).value;
+        var time = new Date().getTime();//获得日期和时间戳
+        localStorage.setItem(time, data);//将得到的时间戳作为键值，并将文本框中的数据作为键名进行保存
+        loadStorage('msg');//在页面上重新显示保存后的数据。
+    }
+
+    function loadStorage(id) {
+        var result = '<div>';
+        //localStorage.length获取保存数据的条数
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            result += '<div id="con">' + value +'</div>';
+        }
+        result += '</div>';
+        var target = document.getElementById(id);
+        target.innerHTML = result;
+    }
+
+    function clearStorage() {
+        localStorage.clear();
+        // alert("全部数据被清除。");
+        loadStorage('msg');
+    }
+</script>
+</html>
