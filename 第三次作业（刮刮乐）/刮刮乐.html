@@ -91,8 +91,8 @@
         ctx.font = '50px Arial';
         ctx.fillText('',80,115);
 
-        //2. 为canvas元素onmousedown和onmouseup事件
-        canvas.onmousedown = function(){
+        //2. 为canvas元素onmouseover和onmouseup事件
+        canvas.onmouseover = function(){
             // 鼠标按下时 - 绑定鼠标跟随事件
             bol = true;
             bindHandler(canvas,'mousemove',brush,false);
