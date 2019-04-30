@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div id="canvasArea" style="width:300px;height:200px;position:relative;">
+    		<div style="width:300px;height:200px;background:white;position:absolute;top:0;left:0;z-index:1;text-align:center;line-height:200px;font-weight:bold;font-size:56px;color:black;border:1px solid black;">
+    			<span>一等奖</span>
+    		</div>
+    		<canvas id="canvas" width="300px" height="200px" style="position:absolute;top:0;left:0;z-index:2;"></canvas>
+	</div>
+</body>	
+<script type="text/javascript">
+ 	(function(){
+        // 事件绑定
+        window.bindHandler = (function() {
+            if (window.addEventListener) {// 标准浏览器
+                return function(elem, type, handler) {
+                    // elem:节点    type:事件类型   handler:事件处理函数
+                    // 最后一个参数为true:在捕获阶段调用事件处理程序;为false:在冒泡阶段调用事件处理程序。
+                    elem.addEventListener(type, handler, false);
+                }
+            } else if (window.attachEvent) {// IE浏览器
+                return function(elem, type, handler) {
+                    elem.attachEvent("on" + type, handler);
+                }
+            }
+        }());
+
+        // 事件解除
+        window.removeHandler = (function() {
+            if (window.removeEventListener) {// 标准浏览器
+                return function(elem, type, handler) {
+                    elem.removeEventListener(type, handler, false);
+                }
+            } else if (window.detachEvent) {// IE浏览器
+                return function(elem, type, handler) {
+                    elem.detachEvent("on" + type, handler);
+                }
+            }
+        }());
+
+        var canvas = document.getElementById("canvas");
+        //创建context对象
+        var ctx = canvas.getContext("2d");
+
+        //随机产生刮奖内容
+        var span = document.getElementsByTagName("span")[0];
+        var arr = ["一等奖","二等奖","三等奖","谢谢参与"];
+        var bol = false;
+        function move(){
+        	var timer = setInterval(function(){
+        		if(bol == true){
+        			clearInterval(timer);
+        		}
+        		var arr1 = arr[ran(3,0)];
+        		span.innerHTML = arr1;
+        	},100)
+        }
+        function ran(max,min){
+        	return Math.round(Math.random()*(max-min)+min);
+        }
+        move();
+
+        //刮奖
+        var brush = function () {
+            ctx.clearRect(event.offsetX,event.offsetY,20,20);
+            // console.log(event.offsetX,event.offsetY);
+			// var datas = ctx.getImageData(0,0,event.offsetX,event.offsetY);
+            // var data = datas.data;
+            // var n = 0;
+            // for(var i = 0;i<data.length;i+=4){
+            // 	var n = data[i+3];
+            // 	if(n == 0){
+            // 		n++;
+            // 	}
+            // 	if(n >= data.length/4*0.85){
+            // 		event.clearRect();
+            // 	}
+            // }
+        };
+
+		//功能实现区
+
+		//绘制刮奖区域
+        ctx.fillStyle = '#A9AB9D';
+        ctx.fillRect(0,0,300,200);
+        ctx.fillStyle = '#fff';
+        ctx.font = '50px Arial';
+        ctx.fillText('',80,115);
+
+        //2. 为canvas元素onmousedown和onmouseup事件
+        canvas.onmousedown = function(){
+            // 鼠标按下时 - 绑定鼠标跟随事件
+            bol = true;
+            bindHandler(canvas,'mousemove',brush,false);
+        };
+        canvas.onmouseup = function(){
+            // 停止刮奖功能 - 解绑鼠标跟随事件
+            removeHandler(canvas,"mousemove",brush,false);
+        };
+
+        //移动端手滑动
+        function lottery(x,y,c){
+
+            c.clearRect(x,y,20,20);
+        }
+        canvas.addEventListener('touchmove',function(event){
+            //如果触屏时只有一只手
+            if(event.targetTouches.length == 1){
+                event.preventDefault();// 阻止浏览器默认事件，重要
+                var touch = event.targetTouches[0];
+                var canavOffest = (canvas).offset();
+                var canvX = Math.floor(touch.pageX - canavOffest.left);
+                var canvY = Math.floor(touch.pageY-canavOffest.top);
+                // console.log(touch.pageX);
+                lottery(canvX,canvY,ctx);
+            }
+
+        },false);
+    })();
+	
+</script>
+</html>
