@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>变形与动画</title>
+    <style>
+        .box {
+            width:400px;
+            height:300px;
+            overflow: hidden;
+            margin-top:20px;
+            background:url(images/img1.jpg) no-repeat;
+            background-size:100% 90%;
+            border:1px solid black;
+            position:relative;
+        }
+
+        #content {
+            width:400px;
+            height:100px;
+            background-color: white;
+            position: absolute;;
+            top:200px;
+            right:0px;
+            transition:all .5s ease-out;
+        }
+
+        #content h3 {
+            padding-left: 30px;
+            margin:0;
+        }
+
+        #zhaopian {
+            width:60px;
+            height:30px;
+            background-color: red;
+            display:inline-block;
+            position: absolute;;
+            text-align:center;
+            top:170px;
+
+        }
+        .wordimg{
+            color:white;
+            text-align: center;
+            line-height:30px;
+            font-size: 13px;
+        }
+
+        bottom {
+            position: absolute;
+            left:40px;
+            bottom:5px;
+        }
+
+        bottom span {
+            font-size:10px;
+            color:#b0b0b0;
+            
+        }
+
+        h4 {
+            color:red;
+            padding-left:30px;
+            padding-top: 10px;
+            margin:0;
+            font-size:16px;
+            
+        }
+
+        .circle {
+            position: absolute;
+            width:40px;
+            height:40px;
+            background-color: red;
+            top:25px;
+            right:25px;
+            border-radius:50%;
+            text-align:center;
+        }
+        .circle p {
+            font-size:12px;
+            margin:0px;
+            color:#ffff;
+            line-height:20px;
+        }
+
+       .jianjie {
+           font-size:13px;
+           color:#b0b0b0;
+           display:none;
+           padding-left:30px;
+           margin-top:15px;
+       }
+
+       .img1 {
+            width:400px;
+            height:300px;
+            background: url(images/bg1.jpg);
+            position:absolute;
+            top:0;
+            left:0;
+            background-size:100% 100%;
+            transition:all .5s ease-out;
+       }
+
+       /* 浮动效果 */
+
+       .box:hover .img1{
+           background-size:110% 110%;
+           filter:brightness(0.6);/*阴影效果*/
+           transition:all .5s;
+       }
+
+       .box:hover #zhaopian {
+           top:70px;
+           transition:all .5s ease-out;
+       }
+       
+       .box:hover #content {
+            top:100px;
+            height:200px;
+            transition:all .5s ease-out;
+       }
+       .box:hover #content .jianjie {
+            display:block;
+            width:300px;
+            transition:all .5s ease-out;
+       }
+       
+    </style>
+</head>
+<body>
+    <div class = "box">
+        <div class = "img1"></div>
+        <div class = "circle">
+            <p>15</p>
+            <p>5月</p>
+        </div>
+        <div id = "zhaopian">
+            <span class="wordimg">照片</span>
+        </div>
+        <div id = "content">
+            <h3>北京故宫</h3>
+            <h4>国家AAAAA级旅游景区</h4>
+            <span class = "jianjie">北京故宫是中国明清两代的皇家宫殿，旧称为紫禁城，位于北京中轴线的中心，是中国古代宫廷建筑之精华。北京故宫以三大殿为中心，占地面积72万平方米，建筑面积约15万平方米，有大小宫殿七十多座，房屋九千余间。是世界上现存规模最大、保存最为完整的木质结构古建筑之一。</span>
+            <bottom>
+                <span>10分钟前 123评论</span>
+            </bottom>
+        </div>
+    </div>
+</body>
+<script>
+    var content  = document.getElementById("content");
+    var zhaopian = document.getElementById("zhaopian");
+    
+</script>
+</html>
